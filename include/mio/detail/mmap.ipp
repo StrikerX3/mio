@@ -208,7 +208,7 @@ inline mmap_context memory_map(const file_handle_type file_handle, const int64_t
     char* mapping_start = static_cast<char*>(::mmap(
             0, // Don't give hint as to where to map.
             length_to_map,
-            mode == access_mode::read ? PROT_READ : PROT_WRITE,
+            mode == access_mode::read ? PROT_READ : PROT_READ | PROT_WRITE,
             mode == access_mode::copy_on_write ? MAP_PRIVATE : MAP_SHARED,
             file_handle,
             aligned_offset));
